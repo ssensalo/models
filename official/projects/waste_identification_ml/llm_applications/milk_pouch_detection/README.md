@@ -100,7 +100,7 @@ images to the source GCS bucket created by the script. The script output will
 provide the name of the bucket.
 
 ```bash
-gcloud storage cp your-local-image.jpg gs://<source-bucket-name>/
+gsutil cp your-local-image.jpg gs://<source-bucket-name>/
 ```
 ---
 
