@@ -127,7 +127,7 @@ class GroupConv2D(tf_keras.layers.Conv2D):
     if self.use_batch_norm:
       self.batch_norm_layer = [
           batch_norm_layer(  # pyrefly: ignore[not-callable]
-              axis=-1, momentum=self.bn_momentum, epsilon=self.bn_epsilon)
+              axis=-1, momentum=self.bn_momentum, epsilon=self.bn_epsilon)  # pyrefly: ignore[unexpected-keyword]
           for i in range(self._groups)
       ]
 

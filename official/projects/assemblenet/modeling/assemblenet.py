@@ -1033,7 +1033,7 @@ def build_assemblenet_v1(
       backbone_cfg.blocks)
   params = ASSEMBLENET_SPECS[assemblenet_depth]
   block_fn = functools.partial(
-      params['block'],  # pyrefly: ignore[bad-argument-type]
+      params['block'],  # pyrefly: ignore[bad-argument-type, not-callable]
       use_sync_bn=norm_activation_config.use_sync_bn,
       bn_decay=norm_activation_config.norm_momentum,
       bn_epsilon=norm_activation_config.norm_epsilon)

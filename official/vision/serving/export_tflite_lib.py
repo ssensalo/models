@@ -141,7 +141,7 @@ def convert_tflite_model(
           representative_dataset,
           params=params,
           task=task,
-          calibration_steps=calibration_steps)
+          calibration_steps=calibration_steps)  # pyrefly: ignore[bad-argument-type]
       if quant_type.startswith('int8_full'):
         converter.target_spec.supported_ops = [
             tf.lite.OpsSet.TFLITE_BUILTINS_INT8
@@ -161,7 +161,7 @@ def convert_tflite_model(
             debug_dataset=functools.partial(
                 representative_dataset,
                 params=params,
-                calibration_steps=calibration_steps),
+                calibration_steps=calibration_steps),  # pyrefly: ignore[bad-argument-type]
             debug_options=debug_options)
         debugger.run()
         return debugger.get_nondebug_quantized_model()

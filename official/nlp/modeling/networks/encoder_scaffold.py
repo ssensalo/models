@@ -134,8 +134,8 @@ class EncoderScaffold(tf_keras.Model):
             **embedding_cfg) if embedding_cfg else embedding_cls()
       else:
         embedding_network = embedding_cls
-      inputs = embedding_network.inputs
-      embeddings, attention_mask = embedding_network(inputs)
+      inputs = embedding_network.inputs  # pyrefly: ignore[missing-attribute]
+      embeddings, attention_mask = embedding_network(inputs)  # pyrefly: ignore[not-callable]
       embedding_layer = None
       position_embedding_layer = None
       type_embedding_layer = None
@@ -193,7 +193,7 @@ class EncoderScaffold(tf_keras.Model):
         mask_layer = mask_cls(**mask_cfg)
       else:
         mask_layer = mask_cls
-      attention_mask = mask_layer(embeddings, mask)
+      attention_mask = mask_layer(embeddings, mask)  # pyrefly: ignore[not-callable]
 
     data = embeddings
 
@@ -225,9 +225,9 @@ class EncoderScaffold(tf_keras.Model):
       else:
         layer = cur_hidden_cls
       if recursive:
-        data, recursive_states = layer([data, attention_mask, recursive_states])
+        data, recursive_states = layer([data, attention_mask, recursive_states])  # pyrefly: ignore[not-callable]
       else:
-        data = layer([data, attention_mask])
+        data = layer([data, attention_mask])  # pyrefly: ignore[not-callable]
       layer_output_data.append(data)
       hidden_layers.append(layer)
 
